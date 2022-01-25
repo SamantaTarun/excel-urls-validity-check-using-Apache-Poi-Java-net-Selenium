@@ -29,7 +29,7 @@ public class TableExample {
 		       Row nextRow = rowiterator.next();
 		       Iterator<Cell> cellIterator = nextRow.cellIterator();
 		       key= null;
-			   value= null;
+		       value= null;
 		       if(nextRow.getCell(0)!=null)
 		    	   key = nextRow.getCell(0).getStringCellValue();
 		       
@@ -59,7 +59,7 @@ public class TableExample {
 		       }  
 		     }
 		     file.close();
-		     FileOutputStream outFile = new FileOutputStream(new File("C:/Users/tarun.samanta/OneDrive - Accenture/Desktop/Primavera.xlsx"));
+		     FileOutputStream outFile = new FileOutputStream(new File("C:/Users/tarun.samanta/OneDrive - Accenture/Desktop/someexcel.xlsx"));
 		     workbook.write(outFile);
 		     outFile.close();
 		     workbook.close();
