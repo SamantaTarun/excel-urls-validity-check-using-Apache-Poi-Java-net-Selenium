@@ -19,7 +19,7 @@ public class TableExample {
 	{
 		try {
 
-		    FileInputStream file = new FileInputStream(new File("C:/Users/tarun.samanta/OneDrive - Accenture/Desktop/Primavera.xlsx"));
+		    FileInputStream file = new FileInputStream(new File("C:/Users/tarun.samanta/OneDrive - Accenture/Desktop/someexcel.xlsx"));
 		    Workbook workbook = new XSSFWorkbook(file);
 		    Sheet datatypeSheet = workbook.getSheetAt(0);
 		    Iterator<Row> rowiterator = datatypeSheet.iterator();
