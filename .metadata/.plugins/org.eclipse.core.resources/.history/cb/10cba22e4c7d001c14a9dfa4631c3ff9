@@ -1,0 +1,93 @@
+package poiexample;
+import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Iterator;
+
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.FormulaEvaluator;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Iterator;
+//..
+
+// Main class
+public class TableExample {
+
+	// Main driver method
+	
+	public static void main(String[] args) throws Exception
+	{
+
+		try {
+
+		    FileInputStream file = new FileInputStream(new File("C:/Users/tarun.samanta/OneDrive - Accenture/Desktop/Primavera.xlsx"));
+		  //Get the workbook instance for XLS file 
+		    Workbook workbook = new XSSFWorkbook(file);
+		    Sheet datatypeSheet = workbook.getSheetAt(0);
+		    //int rowTotal = datatypeSheet.getLastRowNum();
+		    //System.out.println(rowTotal);
+		    Iterator<Row> rowiterator = datatypeSheet.iterator();
+		     String key;
+		     String value;
+		     while (rowiterator.hasNext()) {
+		       Row nextRow = rowiterator.next();
+		       Iterator<Cell> cellIterator = nextRow.cellIterator();
+		       key= null;
+			   value= null;
+		       if(nextRow.getCell(0)!=null)
+		    	   key = nextRow.getCell(0).getStringCellValue();
+		       
+		       if(nextRow.getCell(1)!=null)
+		    	   value = nextRow.getCell(1).getStringCellValue();
+		       
+		       if(key==null)
+		    	   continue;
+		       else if(key==null && value==null)
+		    	   continue;
+		       
+		       else if(key!=null && value.equals("Removed"))
+		    	   continue;
+		       //if(value!=null&&value.equals("Comments"))
+		    	   //nextRow.getCell(0).setCellValue("822e2g");
+		       
+		       System.out.println(key+ "   "+value);
+		        
+		     }
+		     Cell cell = null;
+		     cell = datatypeSheet.getRow(1).getCell(1);
+		     cell.setCellValue("jdbjwbdwkuecebew");
+		     file.close();
+
+		     FileOutputStream outFile = new FileOutputStream(new File("C:/Users/tarun.samanta/OneDrive - Accenture/Desktop/Primavera.xlsx"));
+		     workbook.write(outFile);
+		     outFile.close();
+
+            
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		
+		
+		
+	}
+
+		   
+	
+}
