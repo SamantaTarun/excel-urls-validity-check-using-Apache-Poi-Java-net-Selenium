@@ -43,7 +43,7 @@ public class TableExample {
 		    	   continue;
 		       else if(key!=null && key.length()>5 && key.substring(0,4).equals("http")) {
 		    	   
-		    	   URL url=new URL("https://www.linkedin.com/");
+		    	   URL url=new URL(key);
 		    	   HttpURLConnection connection=(HttpURLConnection)url.openConnection();
 		    	   connection.setRequestMethod("GET");
 		    	   connection.connect();
@@ -52,6 +52,10 @@ public class TableExample {
 		    	   if(code==200) {
 		    		   nextRow.getCell(3).setCellValue("OK");
 		    	   }
+			   else{
+				  nextRow.getCell(3).setCellValue("Not OK"); 
+			   }
+			      
 		       }  
 		     }
 		     file.close();
